@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111a17">
+  <meta name="description" content="午夜失物局是一個短篇推理遊戲。翻閱失物檔案，從三條證物中找出真相。">
+  <title>午夜失物局｜互動推理檔案</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./cases.js"></script>
+  <script defer src="./game.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要內容</a>
+  <div class="frame">
+    <header class="masthead">
+      <a class="brand" href="#" aria-label="午夜失物局首頁"><span class="brand-mark" aria-hidden="true">✳</span><span>午夜失物局</span></a>
+      <a class="progress" href="#archive">
+        <span class="signal" aria-hidden="true"></span>
+        <span id="progress-count">破案紀錄</span>
+      </a>
+    </header>
+    <main id="main">
+      <section id="home">
+        <div class="hero">
+          <div class="hero-copy">
+            <h1>午夜之後，<br><em>失物會說話。</em></h1>
+            <p>末班車開走後，失物櫃多了幾件古怪的東西。<br class="desktop-break">挑一件失物，翻開三條線索，還原今晚發生的事。</p>
+            <a class="primary" href="#archive">翻閱案件 <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="art-grid"></div>
+            <div class="back-ticket"></div>
+            <div class="ticket">
+              <span class="ticket-id">MIDNIGHT<br>LOST &amp; FOUND</span>
+              <div class="ticket-stamp">✳</div>
+              <div class="ticket-bottom"><span>23:59<br>夜班出勤證</span><i></i></div>
+            </div>
+          </div>
+        </div>
+        <section id="archive" class="archive" aria-labelledby="archive-title">
+          <div class="section-heading">
+            <h2 id="archive-title">失物檔案</h2>
+            <p id="archive-count"></p>
+          </div>
+          <div id="case-list" class="case-list"></div>
+          <noscript><p>請啟用 JavaScript 以查看案件並遊玩。</p></noscript>
+        </section>
+      </section>
+      <section id="case-view" class="case-view" aria-labelledby="case-title" hidden>
+        <a class="back-link" href="#archive"><span aria-hidden="true">←</span> 返回失物檔案</a>
+        <div id="case-content"></div>
+      </section>
+    </main>
+    <footer><span>午夜失物局</span><span>原創短篇推理遊戲</span></footer>
+  </div>
+  <template id="card-template">
+    <a class="case-card">
+      <span class="card-meta"><span class="card-number"></span><span class="card-state"></span></span>
+      <span class="case-icon" aria-hidden="true"></span>
+      <h3></h3>
+      <p></p>
+      <span class="card-open"><span class="card-type"></span><span aria-hidden="true">↗</span></span>
+    </a>
+  </template>
+  <template id="case-template">
+    <div class="case-intro">
+      <span class="case-label"></span>
+      <h1 id="case-title" tabindex="-1"></h1>
+      <p class="case-story"></p>
+    </div>
+    <div class="investigation">
+      <section class="evidence" aria-labelledby="evidence-title">
+        <div class="evidence-header"><h2 id="evidence-title">證物</h2><span class="evidence-count"></span></div>
+        <div class="clues"></div>
+      </section>
+      <form class="verdict">
+        <fieldset>
+          <legend></legend>
+          <div class="options"></div>
+        </fieldset>
+        <div class="verdict-actions">
+          <button class="primary" type="submit" disabled>提交推論 <span aria-hidden="true">↗</span></button>
+          <button class="hint-button" type="button" aria-expanded="false" aria-controls="hint">看提示</button>
+        </div>
+        <p id="hint" class="hint" hidden></p>
+        <div class="feedback" role="status" aria-live="polite"></div>
+        <a class="next-link" hidden></a>
+      </form>
+    </div>
+  </template>
+</body>
+</html>
